@@ -24,6 +24,12 @@
 				emoji.removeAttribute('title');
 			});
 			return tempDiv.innerHTML;
+		},
+		handleExceptions: function(name) {
+			if (name.indexOf('sleeping_accommodation_tone') !== -1) {
+				return name.replace(/sleeping_accommodation_tone/, 'person_in_bed_tone');
+			}
+			return name;
 		}
 	};
 
@@ -129,7 +135,7 @@
 						btn.dataset.tone = toneIndex;
 					}
 
-					var name = emoji + tone;
+					var name = EmojiHelper.handleExceptions(emoji + tone);
 					btn.title = Util.titleCase(name, '_');
 
 					var shortname = ':' + name + ':';
