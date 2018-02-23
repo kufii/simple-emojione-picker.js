@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Emoji Picker Tester</title>
+
+	<link rel="stylesheet" href="emojipicker.css" />
+
+	<script src="https://cdn.rawgit.com/emojione/emojione/9a81e8462ea5c1efc8e4f2947944d0a248b8ec73/lib/js/emojione.min.js"></script>
+	<script src="emojipicker.js"></script>
+	<style>
+		#picker {
+			height: 276px;
+			width: 316px;
+		}
+	</style>
+</head>
+<body>
+	<div id='picker'></div>
+	<script>
+		var picker = EmojiPicker(document.querySelector('#picker'), {
+			onselect: function(unicode, shortname) {
+				console.log(unicode, shortname);
+			}
+		});
+		picker.selectTone(3);
+	</script>
+</body>
+</html>
