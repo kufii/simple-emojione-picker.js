@@ -1,0 +1,149 @@
+.emojione-picker {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+}
+
+.emojione-picker-top {
+	padding: 5px 0 5px 8px;
+	flex-grow: 0;
+}
+
+.emojione-picker-search {
+	float: left;
+	height: 15px;
+	width: 160px;
+}
+
+.emojione-picker-tones {
+	float: right;
+	margin-right: 10px;
+	margin-top: -1px;
+}
+
+.emojione-picker-tone {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.emojione-picker-tone::after {
+	position: relative;
+	border-radius:  100%;
+	content: "";
+	display: block;
+	top: 4px;
+	left: 4px;
+	width: 12px;
+	height: 12px;
+	background-color: blue;
+}
+
+.emojione-picker-tone.active::after {
+	top: 0;
+	left: 0;
+	width: 20px;
+	height: 20px;
+}
+
+.emojione-picker-tone-0::after {
+	background-color: #ffcf3e;
+}
+
+.emojione-picker-tone-1::after {
+	background-color: #fae3c5;
+}
+
+.emojione-picker-tone-2::after {
+	background-color: #e2cfa5;
+}
+
+.emojione-picker-tone-3::after {
+	background-color: #daa478;
+}
+
+.emojione-picker-tone-4::after {
+	background-color: #a78058;
+}
+
+.emojione-picker-tone-5::after {
+	background-color: #5e4d43;
+}
+
+.emojione-picker-tabs {
+	background-color: #F5F7F9;
+	padding: 0 0 0 9px;
+	height: 40px;
+	flex-grow: 0;
+}
+
+.emojione-picker-tab {
+	display: block;
+	float: left;
+	height: 40px;
+	width: 32px;
+	padding: 7px 1px 0;
+	cursor: pointer;
+	filter: grayscale(100%);
+}
+
+.emojione-picker-tab.active, .emojione-picker-tab:hover {
+	filter: grayscale(0);
+}
+
+.emojione-picker-tab.active {
+	background-color: white;
+}
+
+.emojione-picker-tab > img {
+	width: 26px;
+	height: 26px;
+	margin: 0 3px;
+}
+
+.emojione-picker-pages {
+	overflow: hidden;
+	padding: 0 0 5px;
+	flex-grow: 1;
+	position: relative;
+}
+
+.emojione-picker-page {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow: auto;
+}
+
+.emojione-picker-page.active {
+	display: block;
+}
+
+.emojione-picker-emoji {
+	width: 26px;
+	height: 26px;
+	margin: 1px;
+	padding: 3px;
+	border-radius: 4px;
+	float: left;
+	cursor: pointer;
+}
+
+.emojione-picker-emoji:hover {
+	background-color: #E4E4E4;
+}
+
+.emojione-picker-emoji > img {
+	width: 26px;
+	height: 26px;
+}
+
+.emojione-picker-emoji.hidden {
+	display: none;
+}
