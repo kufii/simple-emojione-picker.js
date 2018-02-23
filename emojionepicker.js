@@ -238,6 +238,7 @@
 					node.removeAttribute('style');
 				});
 				selectPage(lastSelectedPage);
+				pages.scrollTop = 0;
 			}
 		};
 
