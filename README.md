@@ -81,7 +81,7 @@ var picker = EmojiPicker(document.querySelector('#picker'), {
 });
 ````
 
-**`search`**
+**`tones`**
 
 Show tone buttons
 
