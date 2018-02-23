@@ -191,7 +191,6 @@
 
 			lastSelectedPage = index;
 		};
-		selectPage(0);
 
 		var selectTone = function(tone) {
 			tone = tone.toString();
@@ -215,7 +214,6 @@
 				cfg.onToneChange(tone.dataset.index);
 			}
 		};
-		selectTone(0);
 
 		var search = function(query) {
 			if (searchbox) {
@@ -242,33 +240,43 @@
 			}
 		};
 
-		tabs.forEach(function(tab) {
-			tab.onclick = function(e) {
-				selectPage(tab.dataset.index);
+		var setEventHandlers = function() {
+			var tabClick = function(e) {
+				selectPage(e.currentTarget.dataset.index);
 			};
-		});
+			tabs.forEach(function(tab) {
+				tab.onclick = tabClick;
+			});
 
-		tones.forEach(function(tone) {
-			tone.onclick = function(e) {
-				selectTone(tone.dataset.tone);
+			var toneClick = function(e) {
+				selectTone(e.currentTarget.dataset.tone);
 			};
-		});
+			tones.forEach(function(tone) {
+				tone.onclick = toneClick;
+			});
 
-		if (searchbox) {
-			searchbox.onkeyup = function(e) {
-				search(searchbox.value);
-			};
-		}
+			if (searchbox) {
+				searchbox.onkeyup = function(e) {
+					search(searchbox.value);
+				};
+			}
 
-		if (cfg.onselect) {
-			emoji.forEach(function(e) {
-				e.onclick = function() {
-					var shortname = e.dataset.name;
+			if (cfg.onselect) {
+				var emojiClick = function(e) {
+					var emoji = e.currentTarget;
+					var shortname = emoji.dataset.name;
 					var unicode = emojione.shortnameToUnicode(shortname);
 					cfg.onselect(unicode, shortname);
 				};
-			});
-		}
+				emoji.forEach(function(e) {
+					e.onclick = emojiClick;
+				});
+			}
+		};
+
+		selectPage(0);
+		selectTone(0);
+		setEventHandlers();
 
 		container.appendChild(picker);
 
