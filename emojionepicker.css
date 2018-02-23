@@ -77,19 +77,18 @@
 
 .emojione-picker-tabs {
 	background-color: #F5F7F9;
-	padding: 0 0 0 9px;
 	height: 40px;
 	flex-grow: 0;
+	display: flex;
+	justify-content: space-around;
 }
 
 .emojione-picker-tab {
-	display: block;
-	float: left;
-	height: 40px;
-	width: 32px;
 	padding: 7px 1px 0;
 	cursor: pointer;
 	filter: grayscale(100%);
+	flex-grow: 1;
+	text-align: center;
 }
 
 .emojione-picker-tab.active, .emojione-picker-tab:hover {
