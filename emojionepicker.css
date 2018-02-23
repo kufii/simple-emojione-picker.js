@@ -20,7 +20,6 @@
 }
 
 .emojione-picker-tones {
-	margin-top: -1px;
 	flex-grow: 1;
 	display: flex;
 }
