@@ -99,23 +99,18 @@
 		var tabs = document.createElement('div');
 		tabs.classList.add('emojione-picker-tabs');
 
+		var pagesContainer = document.createElement('div');
+		pagesContainer.classList.add('emojione-picker-pages-wrap');
+
 		var pages = document.createElement('div');
 		pages.classList.add('emojione-picker-pages');
 
-		var searchPage = document.createElement('div');
-		searchPage.classList.add('emojione-picker-page');
-		searchPage.dataset.index = categories.length;
-
-		categories.forEach(function(cat, index) {
+		categories.forEach(function(cat, catIndex) {
 			var tab = document.createElement('i');
 			tab.classList.add('emojione-picker-tab');
 			tab.title = cat.title;
-			tab.dataset.index = index;
+			tab.dataset.index = catIndex;
 			tab.innerHTML = EmojiHelper.toImageWithoutTitle(':' + cat.icon + ':');
-
-			var page = document.createElement('div');
-			page.classList.add('emojione-picker-page');
-			page.dataset.index = index;
 
 			cat.emoji.forEach(function(emoji) {
 				var tones = [''];
@@ -124,13 +119,14 @@
 						tones.push('_tone' + i);
 					}
 				}
-				tones.forEach(function(tone, index) {
+				tones.forEach(function(tone, toneIndex) {
 					var btn = document.createElement('i');
 					btn.classList.add('emojione-picker-emoji');
 					btn.setAttribute('role', 'button');
+					btn.dataset.category = catIndex;
 
 					if (tones.length > 1) {
-						btn.dataset.tone = index;
+						btn.dataset.tone = toneIndex;
 					}
 
 					var name = emoji + tone;
@@ -140,19 +136,15 @@
 					btn.dataset.name = shortname;
 					btn.innerHTML = EmojiHelper.toImageWithoutTitle(shortname);
 
-					page.appendChild(btn);
-					searchPage.appendChild(btn.cloneNode(true));
+					pages.appendChild(btn);
 				});
 			});
 
-			pages.appendChild(page);
-			pages.appendChild(searchPage);
 			tabs.appendChild(tab);
 		});
+		pagesContainer.appendChild(pages);
 
-		pages.appendChild(searchPage);
-
-		picker.appendChild(pages);
+		picker.appendChild(pagesContainer);
 		picker.appendChild(tabs);
 
 		return picker;
@@ -166,23 +158,38 @@
 		var picker = createPicker(cfg);
 
 		var tabs = Util.qq('.emojione-picker-tab', picker);
-		var pages = Util.qq('.emojione-picker-page', picker);
 		var tones = Util.qq('.emojione-picker-tone', picker);
 		var emoji = Util.qq('.emojione-picker-emoji', picker);
 		var searchbox = Util.q('.emojione-picker-search', picker);
+		var pages = Util.q('.emojione-picker-pages', picker);
+
+		var lastSelectedPage = '0';
 
 		var selectPage = function(index) {
 			index = index.toString();
-			tabs.concat(pages).forEach(function(node) {
+			tabs.forEach(function(node) {
 				if (node.dataset.index === index) {
 					node.classList.add('active');
 				} else {
 					node.classList.remove('active');
 				}
 			});
+			emoji.forEach(function(e) {
+				if (e.dataset.category === index) {
+					e.removeAttribute('style');
+				} else {
+					e.style.display = 'none';
+				}
+			});
 			if (cfg.onPageChange) {
 				cfg.onPageChange(tab.dataset.index);
 			}
+
+			if (lastSelectedPage !== index) {
+				pages.scrollTop = 0;
+			}
+
+			lastSelectedPage = index;
 		};
 		selectPage(0);
 
@@ -210,14 +217,12 @@
 		};
 		selectTone(0);
 
-		var lastSelectedPage = 0;
 		var search = function(query) {
 			if (searchbox) {
 				searchbox.value = query;
 			}
 			query = query.toLowerCase().trim().replace(/ /g, '_');
 			if (query) {
-				selectPage(categories.length);
 				tabs.forEach(function(tab) {
 					tab.style.display = 'none';
 				});
@@ -238,7 +243,6 @@
 
 		tabs.forEach(function(tab) {
 			tab.onclick = function(e) {
-				lastSelectedPage = tab.dataset.index;
 				selectPage(tab.dataset.index);
 			};
 		});

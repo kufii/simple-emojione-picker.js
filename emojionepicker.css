@@ -105,25 +105,20 @@
 	margin: 0 3px;
 }
 
-.emojione-picker-pages {
+.emojione-picker-pages-wrap {
 	overflow: hidden;
 	padding: 0 0 5px;
 	flex-grow: 1;
 	position: relative;
 }
 
-.emojione-picker-page {
-	display: none;
+.emojione-picker-pages {
 	position: absolute;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
 	overflow: auto;
-}
-
-.emojione-picker-page.active {
-	display: block;
 }
 
 .emojione-picker-emoji {
