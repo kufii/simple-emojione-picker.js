@@ -150,11 +150,15 @@
 		return picker;
 	};
 
-	window.EmojiPicker = function(container, cfg) {
+	var setDefaults = function(cfg) {
 		if (!cfg) cfg = {};
 		if (typeof cfg.search === 'undefined') cfg.search = true;
 		if (typeof cfg.tones === 'undefined') cfg.tones = true;
+		return cfg;
+	};
 
+	window.EmojiPicker = function(container, cfg) {
+		cfg = setDefaults(cfg);
 		var picker = createPicker(cfg);
 
 		var tabs = Util.qq('.emojione-picker-tab', picker);
@@ -164,7 +168,6 @@
 		var pages = Util.q('.emojione-picker-pages', picker);
 
 		var lastSelectedPage = '0';
-
 		var selectPage = function(index) {
 			index = index.toString();
 			tabs.forEach(function(node) {
