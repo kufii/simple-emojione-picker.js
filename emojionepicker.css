@@ -16,11 +16,12 @@
 .emojione-picker-search {
 	margin-right: 3px;
 	min-width: 0;
+	flex-grow: 1;
 }
 
 .emojione-picker-tones {
-	flex-grow: 1;
 	display: flex;
+	margin-left: auto;
 }
 
 .emojione-picker-tone {
