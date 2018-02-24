@@ -53,7 +53,7 @@ Example:
 
 ```javascript
 let picker = EmojiPicker(document.querySelector('#picker'), {
-	onselect: (unicode, shortname) => {
+	onselect(unicode, shortname) {
 	}
 });
 ```
@@ -68,7 +68,7 @@ Example:
 
 ```javascript
 let picker = EmojiPicker(document.querySelector('#picker'), {
-	onPageChange: pageIndex => {
+	onPageChange(pageIndex) {
 	}
 });
 ```
@@ -83,7 +83,7 @@ Example:
 
 ```javascript
 let picker = EmojiPicker(document.querySelector('#picker'), {
-	onToneChange: toneIndex => {
+	onToneChange(toneIndex) {
 	}
 });
 ```

@@ -27,7 +27,7 @@
 	</section>
 	<script>
 		let picker = EmojiPicker(document.querySelector('#picker'), {
-			onselect: (unicode, shortname) => {
+			onselect(unicode, shortname) {
 				document.querySelector('#unicode').textContent = unicode;
 				document.querySelector('#shortname').textContent = shortname;
 			}

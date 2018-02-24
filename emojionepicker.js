@@ -208,7 +208,7 @@
 					t.classList.remove('active');
 				}
 			});
-			emoji.filter(e  => e.dataset.tone).forEach(e => {
+			emoji.filter(e => e.dataset.tone).forEach(e => {
 				if (e.dataset.tone === tone) {
 					e.classList.remove('hidden');
 				} else {
