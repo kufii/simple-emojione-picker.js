@@ -8,6 +8,8 @@ The picker is dependent on emojione.js. You can find it here: https://github.com
 
 You must also link emojionepicker.css and emojionepicker.js
 
+Create the picker by calling `EmojiPicker(context, config)`
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
