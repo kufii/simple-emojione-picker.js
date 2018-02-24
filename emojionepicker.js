@@ -1,4 +1,4 @@
-(function() {
+(() => {
 	'use strict';
 
 	let Util = {
@@ -273,4 +273,4 @@
 			search
 		};
 	};
-}());
+})();
