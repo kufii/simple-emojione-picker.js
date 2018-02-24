@@ -96,6 +96,22 @@ let picker = EmojiPicker(document.querySelector('#picker'), {
 });
 ````
 
+**`width`** and **`height`**
+
+Sets the width/height of the picker
+
+**type:** `string`  
+**default:** `auto`
+
+Example:
+
+````
+let picker = EmojiPicker(document.body, {
+	width: '285px',
+	height: '300px'
+});
+````
+
 ## Functions
 
 **`selectPage(index)`**

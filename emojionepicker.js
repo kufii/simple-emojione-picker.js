@@ -69,6 +69,8 @@
 	let createPicker = function(cfg) {
 		let picker = document.createElement('div');
 		picker.classList.add('emojione-picker');
+		picker.style.width = cfg.width;
+		picker.style.height = cfg.height;
 
 		if (cfg.search || cfg.tones) {
 			let topPanel = document.createElement('div');
