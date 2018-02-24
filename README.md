@@ -2,6 +2,8 @@
 
 An extremely simple emoji picker written in native JS. This has very minimal features, it does not provide any way to output the emoji, it just provides a UI for users to select emoji. For a more fully featured picker please check out this, my project was somewhat based off of it: https://github.com/mervick/emojionearea
 
+[Live Demo](https://kufii.github.io/simple-emojione-picker.js/)
+
 ## Usage
 
 The picker is dependent on emojione.js. You can find it here: https://github.com/emojione/emojione/blob/master/lib/js/emojione.js
