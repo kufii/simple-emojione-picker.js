@@ -10,7 +10,7 @@
 		},
 		titleCase(str, seperator) {
 			seperator = seperator || ' ';
-			return str.split(seperator).map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join('');
+			return str.split(seperator).map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
 		}
 	};
 

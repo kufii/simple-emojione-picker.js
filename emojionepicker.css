@@ -79,7 +79,6 @@
 	background-color: #F5F7F9;
 	flex-grow: 0;
 	display: flex;
-	justify-content: space-around;
 }
 
 .emojione-picker-tab {
