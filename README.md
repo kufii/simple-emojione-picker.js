@@ -6,11 +6,29 @@ An extremely simple emoji picker written in native JS. This has very minimal fea
 
 The picker is dependent on emojione.js. You can find it here: https://github.com/emojione/emojione/blob/master/lib/js/emojione.js
 
+You must also link emojionepicker.css and emojionepicker.js
+
 ````
-<div id='picker'></div>
-<script>
-	let picker = EmojiPicker(document.querySelector('#picker'));
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Emoji Picker Tester</title>
+
+	<link rel="stylesheet" href="emojionepicker.css" />
+
+	<script src="https://cdn.rawgit.com/emojione/emojione/9a81e8462ea5c1efc8e4f2947944d0a248b8ec73/lib/js/emojione.min.js"></script>
+	<script src="emojionepicker.js"></script>
+</head>
+<body>
+	<script>
+		let picker = EmojiPicker(document.body, {
+			width: '285px',
+			height: '300px'
+		});
+	</script>
+</body>
+</html>
 ````
 
 ## Options
