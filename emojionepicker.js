@@ -2,26 +2,26 @@
 	'use strict';
 
 	let Util = {
-		q: function(query, context) {
+		q(query, context) {
 			return (context || document).querySelector(query);
 		},
-		qq: function(query, context) {
+		qq(query, context) {
 			return [].slice.call((context || document).querySelectorAll(query));
 		},
-		titleCase: function(str, seperator) {
+		titleCase(str, seperator) {
 			seperator = seperator || ' ';
 			return str.split(seperator).map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join('');
 		}
 	};
 
 	let EmojiHelper = {
-		toImageWithoutTitle: function(str) {
+		toImageWithoutTitle(str) {
 			let tempDiv = document.createElement('div');
 			tempDiv.innerHTML = emojione.toImage(str);
 			Util.qq('img', tempDiv).forEach(emoji => emoji.removeAttribute('title'));
 			return tempDiv.innerHTML;
 		},
-		handleExceptions: function(name) {
+		handleExceptions(name) {
 			if (name.indexOf('sleeping_accommodation_tone') !== -1) {
 				return name.replace(/sleeping_accommodation_tone/, 'person_in_bed_tone');
 			}
