@@ -8,7 +8,7 @@ The picker is dependent on emojione.js. You can find it here: https://github.com
 
 You must also link emojionepicker.css and emojionepicker.js
 
-````
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,15 +29,15 @@ You must also link emojionepicker.css and emojionepicker.js
 	</script>
 </body>
 </html>
-````
+```
 
 ## Options
 
 Configuration parameters can be passed by adding a cfg object parameter. Eg.
 
-````
+```javascript
 let picker = EmojiPicker(document.querySelector('#picker'), cfg);
-````
+```
 
 **`onselect`**
 
@@ -47,12 +47,12 @@ Captures the selected emoji.
 
 Example:
 
-````
+```javascript
 let picker = EmojiPicker(document.querySelector('#picker'), {
 	onselect: (unicode, shortname) => {
 	}
 });
-````
+```
 
 **`onPageChange`**
 
@@ -62,12 +62,12 @@ Captres page change event
 
 Example:
 
-````
+```javascript
 let picker = EmojiPicker(document.querySelector('#picker'), {
 	onPageChange: pageIndex => {
 	}
 });
-````
+```
 
 **`onToneChange`**
 
@@ -77,12 +77,12 @@ Captures skin tone change event
 
 Example:
 
-````
+```javascript
 let picker = EmojiPicker(document.querySelector('#picker'), {
 	onToneChange: toneIndex => {
 	}
 });
-````
+```
 
 **`search`**
 
@@ -93,11 +93,11 @@ Show search box
 
 Example:
 
-````
+```javascript
 let picker = EmojiPicker(document.querySelector('#picker'), {
 	search: false
 });
-````
+```
 
 **`tones`**
 
@@ -108,11 +108,11 @@ Show tone buttons
 
 Example:
 
-````
+```javascript
 let picker = EmojiPicker(document.querySelector('#picker'), {
 	tones: false
 });
-````
+```
 
 **`width`** and **`height`**
 
@@ -123,12 +123,12 @@ Sets the width/height of the picker
 
 Example:
 
-````
+```javascript
 let picker = EmojiPicker(document.body, {
 	width: '285px',
 	height: '300px'
 });
-````
+```
 
 ## Functions
 
@@ -138,10 +138,10 @@ Programatically change the picker's page
 
 Example:
 
-````
+```javascript
 let picker = EmojiPicker(document.querySelector('#picker'));
 picker.selectPage(3);
-````
+```
 
 **`selectTone(index)`**
 
@@ -149,10 +149,10 @@ Programatically set the selected tone
 
 Example:
 
-````
+```javascript
 let picker = EmojiPicker(document.querySelector('#picker'));
 picker.selectTone(3);
-````
+```
 
 **`search(query)`**
 
@@ -160,7 +160,7 @@ Programatically perform a search
 
 Example:
 
-````
+```javascript
 let picker = EmojiPicker(document.querySelector('#picker'));
 picker.search('heart');
-````
+```
