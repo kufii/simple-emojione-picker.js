@@ -6,7 +6,7 @@
 			return (context || document).querySelector(query);
 		},
 		qq(query, context) {
-			return [].slice.call((context || document).querySelectorAll(query));
+			return Array.from((context || document).querySelectorAll(query));
 		},
 		titleCase(str, seperator) {
 			seperator = seperator || ' ';
