@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-	var Util = {
+	let Util = {
 		q: function(query, context) {
 			return (context || document).querySelector(query);
 		},
@@ -10,19 +10,15 @@
 		},
 		titleCase: function(str, seperator) {
 			seperator = seperator || ' ';
-			return str.split(seperator).map(function(word) {
-				return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-			}).join(' ');
+			return str.split(seperator).map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join('');
 		}
 	};
 
-	var EmojiHelper = {
+	let EmojiHelper = {
 		toImageWithoutTitle: function(str) {
-			var tempDiv = document.createElement('div');
+			let tempDiv = document.createElement('div');
 			tempDiv.innerHTML = emojione.toImage(str);
-			Util.qq('img', tempDiv).forEach(function(emoji) {
-				emoji.removeAttribute('title');
-			});
+			Util.qq('img', tempDiv).forEach(emoji => emoji.removeAttribute('title'));
 			return tempDiv.innerHTML;
 		},
 		handleExceptions: function(name) {
@@ -33,7 +29,7 @@
 		}
 	};
 
-	var categories = [
+	let categories = [
 		{
 			title: 'Smilies & People',
 			icon: 'grinning',
@@ -68,18 +64,18 @@
 			emoji: ['flag_white','flag_black','checkered_flag','triangular_flag_on_post','rainbow_flag','flag_af','flag_ax','flag_al','flag_dz','flag_as','flag_ad','flag_ao','flag_ai','flag_aq','flag_ag','flag_ar','flag_am','flag_aw','flag_au','flag_at','flag_az','flag_bs','flag_bh','flag_bd','flag_bb','flag_by','flag_be','flag_bz','flag_bj','flag_bm','flag_bt','flag_bo','flag_ba','flag_bw','flag_br','flag_io','flag_vg','flag_bn','flag_bg','flag_bf','flag_bi','flag_kh','flag_cm','flag_ca','flag_ic','flag_cv','flag_bq','flag_ky','flag_cf','flag_td','flag_cl','flag_cn','flag_cx','flag_cc','flag_co','flag_km','flag_cg','flag_cd','flag_ck','flag_cr','flag_ci','flag_hr','flag_cu','flag_cw','flag_cy','flag_cz','flag_dk','flag_dj','flag_dm','flag_do','flag_ec','flag_eg','flag_sv','flag_gq','flag_er','flag_ee','flag_et','flag_eu','flag_fk','flag_fo','flag_fj','flag_fi','flag_fr','flag_gf','flag_pf','flag_tf','flag_ga','flag_gm','flag_ge','flag_de','flag_gh','flag_gi','flag_gr','flag_gl','flag_gd','flag_gp','flag_gu','flag_gt','flag_gg','flag_gn','flag_gw','flag_gy','flag_ht','flag_hn','flag_hk','flag_hu','flag_is','flag_in','flag_id','flag_ir','flag_iq','flag_ie','flag_im','flag_il','flag_it','flag_jm','flag_jp','crossed_flags','flag_je','flag_jo','flag_kz','flag_ke','flag_ki','flag_xk','flag_kw','flag_kg','flag_la','flag_lv','flag_lb','flag_ls','flag_lr','flag_ly','flag_li','flag_lt','flag_lu','flag_mo','flag_mk','flag_mg','flag_mw','flag_my','flag_mv','flag_ml','flag_mt','flag_mh','flag_mq','flag_mr','flag_mu','flag_yt','flag_mx','flag_fm','flag_md','flag_mc','flag_mn','flag_me','flag_ms','flag_ma','flag_mz','flag_mm','flag_na','flag_nr','flag_np','flag_nl','flag_nc','flag_nz','flag_ni','flag_ne','flag_ng','flag_nu','flag_nf','flag_kp','flag_mp','flag_no','flag_om','flag_pk','flag_pw','flag_ps','flag_pa','flag_pg','flag_py','flag_pe','flag_ph','flag_pn','flag_pl','flag_pt','flag_pr','flag_qa','flag_re','flag_ro','flag_ru','flag_rw','flag_ws','flag_sm','flag_st','flag_sa','flag_sn','flag_rs','flag_sc','flag_sl','flag_sg','flag_sx','flag_sk','flag_si','flag_gs','flag_sb','flag_so','flag_za','flag_kr','flag_ss','flag_es','flag_lk','flag_bl','flag_sh','flag_kn','flag_lc','flag_pm','flag_vc','flag_sd','flag_sr','flag_sz','flag_se','flag_ch','flag_sy','flag_tw','flag_tj','flag_tz','flag_th','flag_tl','flag_tg','flag_tk','flag_to','flag_tt','flag_tn','flag_tr','flag_tm','flag_tc','flag_tv','flag_vi','flag_ug','flag_ua','flag_ae','flag_gb','flag_us','flag_uy','flag_uz','flag_vu','flag_va','flag_ve','flag_vn','flag_wf','flag_eh','flag_ye','flag_zm','flag_zw','flag_ac','flag_ta','flag_bv','flag_hm','flag_sj','flag_um','flag_ea','flag_cp','flag_dg','flag_mf','united_nations','england','scotland','wales']
 		}
 	];
-	var diverse = ['open_hands','raised_hands','clap','pray','thumbsup','thumbsdown','punch','fist','left_facing_fist','right_facing_fist','fingers_crossed','v','metal','ok_hand','point_left','point_right','point_up_2','point_down','point_up','raised_hand','raised_back_of_hand','hand_splayed','vulcan','wave','call_me','muscle','middle_finger','writing_hand','selfie','nail_care','ear','nose','baby','boy','girl','man','woman','blond-haired_woman','blond_haired_person','blond-haired_man','older_man','older_woman','man_with_chinese_cap','woman_wearing_turban','person_wearing_turban','man_wearing_turban','woman_police_officer','police_officer','man_police_officer','woman_construction_worker','construction_worker','man_construction_worker','woman_guard','guard','man_guard','woman_detective','detective','man_detective','woman_health_worker','man_health_worker','woman_farmer','man_farmer','woman_cook','man_cook','woman_student','man_student','woman_singer','man_singer','woman_teacher','man_teacher','woman_factory_worker','man_factory_worker','woman_technologist','man_technologist','woman_office_worker','man_office_worker','woman_mechanic','man_mechanic','woman_scientist','man_scientist','woman_artist','man_artist','woman_firefighter','man_firefighter','woman_pilot','man_pilot','woman_astronaut','man_astronaut','woman_judge','man_judge','mrs_claus','santa','princess','prince','bride_with_veil','man_in_tuxedo','angel','pregnant_woman','woman_bowing','person_bowing','man_bowing','person_tipping_hand','man_tipping_hand','woman_tipping_hand','person_gesturing_no','man_gesturing_no','woman_gesturing_no','person_gesturing_ok','man_gesturing_ok','woman_gesturing_ok','person_raising_hand','man_raising_hand','woman_raising_hand','woman_facepalming','man_facepalming','person_facepalming','woman_shrugging','man_shrugging','person_shrugging','person_pouting','man_pouting','woman_pouting','person_frowning','man_frowning','woman_frowning','person_getting_haircut','man_getting_haircut','woman_getting_haircut','person_getting_massage','man_getting_face_massage','woman_getting_face_massage','levitate','dancer','man_dancing','woman_walking','person_walking','man_walking','woman_running','person_running','man_running','adult','child','older_adult','bearded_person','woman_with_headscarf','mage','fairy','vampire','merperson','elf','love_you_gesture','palms_up_together','woman_mage','man_mage','woman_fairy','man_fairy','woman_vampire','man_vampire','mermaid','merman','woman_elf','man_elf','snowboarder','woman_lifting_weights','person_lifting_weights','man_lifting_weights','woman_cartwheeling','man_cartwheeling','person_doing_cartwheel','woman_bouncing_ball','person_bouncing_ball','man_bouncing_ball','woman_playing_handball','man_playing_handball','person_playing_handball','woman_golfing','person_golfing','man_golfing','woman_surfing','person_surfing','man_surfing','woman_swimming','person_swimming','man_swimming','woman_playing_water_polo','man_playing_water_polo','person_playing_water_polo','woman_rowing_boat','person_rowing_boat','man_rowing_boat','horse_racing','woman_biking','person_biking','man_biking','woman_mountain_biking','person_mountain_biking','man_mountain_biking','woman_juggling','man_juggling','person_juggling','breast_feeding','person_in_steamy_room','person_climbing','person_in_lotus_position','woman_in_steamy_room','man_in_steamy_room','woman_climbing','man_climbing','woman_in_lotus_position','man_in_lotus_position','bath','sleeping_accommodation'];
+	let diverse = ['open_hands','raised_hands','clap','pray','thumbsup','thumbsdown','punch','fist','left_facing_fist','right_facing_fist','fingers_crossed','v','metal','ok_hand','point_left','point_right','point_up_2','point_down','point_up','raised_hand','raised_back_of_hand','hand_splayed','vulcan','wave','call_me','muscle','middle_finger','writing_hand','selfie','nail_care','ear','nose','baby','boy','girl','man','woman','blond-haired_woman','blond_haired_person','blond-haired_man','older_man','older_woman','man_with_chinese_cap','woman_wearing_turban','person_wearing_turban','man_wearing_turban','woman_police_officer','police_officer','man_police_officer','woman_construction_worker','construction_worker','man_construction_worker','woman_guard','guard','man_guard','woman_detective','detective','man_detective','woman_health_worker','man_health_worker','woman_farmer','man_farmer','woman_cook','man_cook','woman_student','man_student','woman_singer','man_singer','woman_teacher','man_teacher','woman_factory_worker','man_factory_worker','woman_technologist','man_technologist','woman_office_worker','man_office_worker','woman_mechanic','man_mechanic','woman_scientist','man_scientist','woman_artist','man_artist','woman_firefighter','man_firefighter','woman_pilot','man_pilot','woman_astronaut','man_astronaut','woman_judge','man_judge','mrs_claus','santa','princess','prince','bride_with_veil','man_in_tuxedo','angel','pregnant_woman','woman_bowing','person_bowing','man_bowing','person_tipping_hand','man_tipping_hand','woman_tipping_hand','person_gesturing_no','man_gesturing_no','woman_gesturing_no','person_gesturing_ok','man_gesturing_ok','woman_gesturing_ok','person_raising_hand','man_raising_hand','woman_raising_hand','woman_facepalming','man_facepalming','person_facepalming','woman_shrugging','man_shrugging','person_shrugging','person_pouting','man_pouting','woman_pouting','person_frowning','man_frowning','woman_frowning','person_getting_haircut','man_getting_haircut','woman_getting_haircut','person_getting_massage','man_getting_face_massage','woman_getting_face_massage','levitate','dancer','man_dancing','woman_walking','person_walking','man_walking','woman_running','person_running','man_running','adult','child','older_adult','bearded_person','woman_with_headscarf','mage','fairy','vampire','merperson','elf','love_you_gesture','palms_up_together','woman_mage','man_mage','woman_fairy','man_fairy','woman_vampire','man_vampire','mermaid','merman','woman_elf','man_elf','snowboarder','woman_lifting_weights','person_lifting_weights','man_lifting_weights','woman_cartwheeling','man_cartwheeling','person_doing_cartwheel','woman_bouncing_ball','person_bouncing_ball','man_bouncing_ball','woman_playing_handball','man_playing_handball','person_playing_handball','woman_golfing','person_golfing','man_golfing','woman_surfing','person_surfing','man_surfing','woman_swimming','person_swimming','man_swimming','woman_playing_water_polo','man_playing_water_polo','person_playing_water_polo','woman_rowing_boat','person_rowing_boat','man_rowing_boat','horse_racing','woman_biking','person_biking','man_biking','woman_mountain_biking','person_mountain_biking','man_mountain_biking','woman_juggling','man_juggling','person_juggling','breast_feeding','person_in_steamy_room','person_climbing','person_in_lotus_position','woman_in_steamy_room','man_in_steamy_room','woman_climbing','man_climbing','woman_in_lotus_position','man_in_lotus_position','bath','sleeping_accommodation'];
 
-	var createPicker = function(cfg) {
-		var picker = document.createElement('div');
+	let createPicker = function(cfg) {
+		let picker = document.createElement('div');
 		picker.classList.add('emojione-picker');
 
 		if (cfg.search || cfg.tones) {
-			var topPanel = document.createElement('div');
+			let topPanel = document.createElement('div');
 			topPanel.classList.add('emojione-picker-top');
 
 			if (cfg.search) {
-				var search = document.createElement('input');
+				let search = document.createElement('input');
 				search.classList.add('emojione-picker-search');
 				search.setAttribute('placeholder', 'SEARCH');
 				search.setAttribute('type', 'text');
@@ -87,10 +83,10 @@
 			}
 
 			if (cfg.tones) {
-				var tones = document.createElement('div');
+				let tones = document.createElement('div');
 				tones.classList.add('emojione-picker-tones');
-				for (var i = 0; i <= 5; i++) {
-					var tone = document.createElement('i');
+				for (let i = 0; i <= 5; i++) {
+					let tone = document.createElement('i');
 					tone.classList.add('emojione-picker-tone', 'emojione-picker-tone-' + i);
 					tone.setAttribute('role', 'button');
 					tone.dataset.tone = i;
@@ -102,31 +98,31 @@
 			picker.appendChild(topPanel);
 		}
 
-		var tabs = document.createElement('div');
+		let tabs = document.createElement('div');
 		tabs.classList.add('emojione-picker-tabs');
 
-		var pagesContainer = document.createElement('div');
+		let pagesContainer = document.createElement('div');
 		pagesContainer.classList.add('emojione-picker-pages-wrap');
 
-		var pages = document.createElement('div');
+		let pages = document.createElement('div');
 		pages.classList.add('emojione-picker-pages');
 
-		categories.forEach(function(cat, catIndex) {
-			var tab = document.createElement('i');
+		categories.forEach((cat, catIndex) => {
+			let tab = document.createElement('i');
 			tab.classList.add('emojione-picker-tab');
 			tab.title = cat.title;
 			tab.dataset.index = catIndex;
-			tab.innerHTML = EmojiHelper.toImageWithoutTitle(':' + cat.icon + ':');
+			tab.innerHTML = EmojiHelper.toImageWithoutTitle(`:${cat.icon}:`);
 
-			cat.emoji.forEach(function(emoji) {
-				var tones = [''];
+			cat.emoji.forEach(emoji => {
+				let tones = [''];
 				if (diverse.includes(emoji)) {
-					for (var i = 1; i <= 5; i++) {
+					for (let i = 1; i <= 5; i++) {
 						tones.push('_tone' + i);
 					}
 				}
-				tones.forEach(function(tone, toneIndex) {
-					var btn = document.createElement('i');
+				tones.forEach((tone, toneIndex) => {
+					let btn = document.createElement('i');
 					btn.classList.add('emojione-picker-emoji');
 					btn.setAttribute('role', 'button');
 					btn.dataset.category = catIndex;
@@ -135,10 +131,10 @@
 						btn.dataset.tone = toneIndex;
 					}
 
-					var name = EmojiHelper.handleExceptions(emoji + tone);
+					let name = EmojiHelper.handleExceptions(emoji + tone);
 					btn.title = Util.titleCase(name, '_');
 
-					var shortname = ':' + name + ':';
+					let shortname = `:${name}:`;
 					btn.dataset.name = shortname;
 					btn.innerHTML = EmojiHelper.toImageWithoutTitle(shortname);
 
@@ -156,44 +152,44 @@
 		return picker;
 	};
 
-	var setDefaults = function(cfg) {
-		if (!cfg) cfg = {};
+	let setDefaults = function(cfg) {
 		if (typeof cfg.search === 'undefined') cfg.search = true;
 		if (typeof cfg.tones === 'undefined') cfg.tones = true;
 		return cfg;
 	};
 
-	window.EmojiPicker = function(container, cfg) {
+	window.EmojiPicker = function(container, cfg = {}) {
 		cfg = setDefaults(cfg);
-		var picker = createPicker(cfg);
+		let picker = createPicker(cfg);
 
-		var tabs = Util.qq('.emojione-picker-tab', picker);
-		var tones = Util.qq('.emojione-picker-tone', picker);
-		var emoji = Util.qq('.emojione-picker-emoji', picker);
-		var searchbox = Util.q('.emojione-picker-search', picker);
-		var pages = Util.q('.emojione-picker-pages', picker);
+		let tabs = Util.qq('.emojione-picker-tab', picker);
+		let tones = Util.qq('.emojione-picker-tone', picker);
+		let emoji = Util.qq('.emojione-picker-emoji', picker);
+		let searchbox = Util.q('.emojione-picker-search', picker);
+		let pages = Util.q('.emojione-picker-pages', picker);
 
-		var lastSelectedPage = '0';
-		var selectPage = function(index) {
+		let lastSelectedPage = '0';
+		let selectPage = function(index) {
 			index = index.toString();
-			tabs.forEach(function(node) {
+
+			tabs.forEach(node => {
 				if (node.dataset.index === index) {
 					node.classList.add('active');
 				} else {
 					node.classList.remove('active');
 				}
 			});
-			emoji.forEach(function(e) {
+			emoji.forEach(e => {
 				if (e.dataset.category === index) {
 					e.removeAttribute('style');
 				} else {
 					e.style.display = 'none';
 				}
 			});
+
 			if (cfg.onPageChange) {
 				cfg.onPageChange(tab.dataset.index);
 			}
-
 			if (lastSelectedPage !== index) {
 				pages.scrollTop = 0;
 			}
@@ -201,18 +197,16 @@
 			lastSelectedPage = index;
 		};
 
-		var selectTone = function(tone) {
+		let selectTone = function(tone) {
 			tone = tone.toString();
-			tones.forEach(function(t) {
+			tones.forEach(t => {
 				if (t.dataset.tone === tone) {
 					t.classList.add('active');
 				} else {
 					t.classList.remove('active');
 				}
 			});
-			emoji.filter(function(e) {
-				return e.dataset.tone;
-			}).forEach(function(e) {
+			emoji.filter(e  => e.dataset.tone).forEach(e => {
 				if (e.dataset.tone === tone) {
 					e.classList.remove('hidden');
 				} else {
@@ -224,16 +218,14 @@
 			}
 		};
 
-		var search = function(query) {
+		let search = function(query) {
 			if (searchbox) {
 				searchbox.value = query;
 			}
 			query = query.toLowerCase().trim().replace(/ /g, '_');
 			if (query) {
-				tabs.forEach(function(tab) {
-					tab.style.display = 'none';
-				});
-				emoji.forEach(function(e) {
+				tabs.forEach(tab => tab.style.display = 'none');
+				emoji.forEach(e => {
 					if (e.dataset.name.indexOf(query) !== -1) {
 						e.removeAttribute('style');
 					} else {
@@ -241,45 +233,31 @@
 					}
 				});
 			} else {
-				emoji.concat(tabs).forEach(function(node) {
-					node.removeAttribute('style');
-				});
+				emoji.concat(tabs).forEach(node => node.removeAttribute('style'));
 				selectPage(lastSelectedPage);
 				pages.scrollTop = 0;
 			}
 		};
 
-		var setEventHandlers = function() {
-			var tabClick = function(e) {
-				selectPage(e.currentTarget.dataset.index);
-			};
-			tabs.forEach(function(tab) {
-				tab.onclick = tabClick;
-			});
+		let setEventHandlers = function() {
+			let tabClick = e => selectPage(e.currentTarget.dataset.index);
+			tabs.forEach(tab => tab.onclick = tabClick);
 
-			var toneClick = function(e) {
-				selectTone(e.currentTarget.dataset.tone);
-			};
-			tones.forEach(function(tone) {
-				tone.onclick = toneClick;
-			});
+			let toneClick = e => selectTone(e.currentTarget.dataset.tone);
+			tones.forEach(tone => tone.onclick = toneClick);
 
 			if (searchbox) {
-				searchbox.onkeyup = function(e) {
-					search(searchbox.value);
-				};
+				searchbox.onkeyup = e => search(e.currentTarget.value);
 			}
 
 			if (cfg.onselect) {
-				var emojiClick = function(e) {
-					var emoji = e.currentTarget;
-					var shortname = emoji.dataset.name;
-					var unicode = emojione.shortnameToUnicode(shortname);
+				let emojiClick = e => {
+					let emoji = e.currentTarget;
+					let shortname = emoji.dataset.name;
+					let unicode = emojione.shortnameToUnicode(shortname);
 					cfg.onselect(unicode, shortname);
 				};
-				emoji.forEach(function(e) {
-					e.onclick = emojiClick;
-				});
+				emoji.forEach(e => e.onclick = emojiClick);
 			}
 		};
 
@@ -290,9 +268,9 @@
 		container.appendChild(picker);
 
 		return {
-			selectTone: selectTone,
-			selectPage: selectPage,
-			search: search
+			selectTone,
+			selectPage,
+			search
 		};
 	};
 }());

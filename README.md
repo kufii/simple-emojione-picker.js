@@ -9,7 +9,7 @@ The picker is dependent on emojione.js. You can find it here: https://github.com
 ````
 <div id='picker'></div>
 <script>
-	var picker = EmojiPicker(document.querySelector('#picker'));
+	let picker = EmojiPicker(document.querySelector('#picker'));
 </script>
 ````
 
@@ -18,7 +18,7 @@ The picker is dependent on emojione.js. You can find it here: https://github.com
 Configuration parameters can be passed by adding a cfg object parameter. Eg.
 
 ````
-var picker = EmojiPicker(document.querySelector('#picker'), cfg);
+let picker = EmojiPicker(document.querySelector('#picker'), cfg);
 ````
 
 **`onselect`**
@@ -30,8 +30,8 @@ Captures the selected emoji.
 Example:
 
 ````
-var picker = EmojiPicker(document.querySelector('#picker'), {
-	onselect: function(unicode, shortname) {
+let picker = EmojiPicker(document.querySelector('#picker'), {
+	onselect: (unicode, shortname) => {
 	}
 });
 ````
@@ -45,8 +45,8 @@ Captres page change event
 Example:
 
 ````
-var picker = EmojiPicker(document.querySelector('#picker'), {
-	onPageChange: function(pageIndex) {
+let picker = EmojiPicker(document.querySelector('#picker'), {
+	onPageChange: pageIndex => {
 	}
 });
 ````
@@ -60,8 +60,8 @@ Captures skin tone change event
 Example:
 
 ````
-var picker = EmojiPicker(document.querySelector('#picker'), {
-	onToneChange: function(toneIndex) {
+let picker = EmojiPicker(document.querySelector('#picker'), {
+	onToneChange: toneIndex => {
 	}
 });
 ````
@@ -76,7 +76,7 @@ Show search box
 Example:
 
 ````
-var picker = EmojiPicker(document.querySelector('#picker'), {
+let picker = EmojiPicker(document.querySelector('#picker'), {
 	search: false
 });
 ````
@@ -91,7 +91,7 @@ Show tone buttons
 Example:
 
 ````
-var picker = EmojiPicker(document.querySelector('#picker'), {
+let picker = EmojiPicker(document.querySelector('#picker'), {
 	tones: false
 });
 ````
@@ -105,7 +105,7 @@ Programatically change the picker's page
 Example:
 
 ````
-var picker = EmojiPicker(document.querySelector('#picker'));
+let picker = EmojiPicker(document.querySelector('#picker'));
 picker.selectPage(3);
 ````
 
@@ -116,7 +116,7 @@ Programatically set the selected tone
 Example:
 
 ````
-var picker = EmojiPicker(document.querySelector('#picker'));
+let picker = EmojiPicker(document.querySelector('#picker'));
 picker.selectTone(3);
 ````
 
@@ -127,6 +127,6 @@ Programatically perform a search
 Example:
 
 ````
-var picker = EmojiPicker(document.querySelector('#picker'));
+let picker = EmojiPicker(document.querySelector('#picker'));
 picker.search('heart');
 ````
