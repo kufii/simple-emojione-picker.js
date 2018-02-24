@@ -8,15 +8,30 @@
 
 	<script src="https://cdn.rawgit.com/emojione/emojione/9a81e8462ea5c1efc8e4f2947944d0a248b8ec73/lib/js/emojione.min.js"></script>
 	<script src="emojionepicker.js"></script>
+	<style>
+		#picker {
+			height: 300px;
+			width: 285px;
+		}
+	</style>
 </head>
 <body>
+	<div id='picker'></div>
+	<section>
+		<p>
+			Unicode: <span id='unicode'></span>
+		</p>
+		<p>
+			Shortname: <span id='shortname'></span>
+		</p>
+	</section>
 	<script>
-		let picker = EmojiPicker(document.body, {
-			width: '285px',
-			height: '300px',
-			onselect: (unicode, shortname) => console.log(unicode, shortname)
+		let picker = EmojiPicker(document.querySelector('#picker'), {
+			onselect: (unicode, shortname) => {
+				document.querySelector('#unicode').textContent = unicode;
+				document.querySelector('#shortname').textContent = shortname;
+			}
 		});
-		picker.selectTone(3);
 	</script>
 </body>
 </html>
