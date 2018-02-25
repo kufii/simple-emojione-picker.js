@@ -207,3 +207,5 @@ You can enable sprite mode to reduce load times, and use emoji sizes of up ot 64
 emojione.imageType = 'png';
 emojione.sprites = true;
 ```
+
+The tradeoff with this mode is that `emojiSize` and `tabIconSize` will not work. The size of the emojis will be the size of whatever spritesheet you link.

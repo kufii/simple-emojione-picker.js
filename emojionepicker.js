@@ -1,9 +1,6 @@
 (() => {
 	'use strict';
 
-	emojione.imageType = 'png';
-	emojione.sprites = true;
-
 	let Util = {
 		q(query, context) {
 			return (context || document).querySelector(query);
@@ -23,8 +20,8 @@
 			tempDiv.innerHTML = emojione.toImage(str);
 			Util.qq('img, span', tempDiv).forEach(emoji => {
 				emoji.removeAttribute('title');
-				if (size) {
-					emoji.style.width = emoji.style.height = size + 'px';
+				if (size && emoji.tagName === 'IMG') {
+					emoji.width = size;
 				}
 			});
 			return tempDiv.innerHTML;
