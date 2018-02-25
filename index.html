@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Emoji Picker Tester</title>
 
+	<link rel="stylesheet" href="https://cdn.rawgit.com/emojione/emojione-assets/3d86ce42/sprites/emojione-sprite-32.min.css" />
 	<link rel="stylesheet" href="emojionepicker.css" />
 
 	<script src="https://cdn.rawgit.com/emojione/emojione/9a81e8462ea5c1efc8e4f2947944d0a248b8ec73/lib/js/emojione.min.js"></script>
@@ -26,6 +27,8 @@
 		</p>
 	</section>
 	<script>
+		emojione.imageType = 'png';
+		emojione.sprites = true;
 		let picker = EmojiPicker(document.querySelector('#picker'), {
 			onselect(unicode, shortname) {
 				document.querySelector('#unicode').textContent = unicode;

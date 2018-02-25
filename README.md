@@ -198,3 +198,12 @@ Example:
 let picker = EmojiPicker(document.querySelector('#picker'));
 picker.search('heart');
 ```
+
+## Sprite Mode
+
+You can enable sprite mode to reduce load times, and use emoji sizes of up ot 64x64. To do so link one of the [emojione spritesheet css](https://github.com/emojione/emojione-assets/tree/master/sprites) and before creating the picker call the following:
+
+```javascript
+emojione.imageType = 'png';
+emojione.sprites = true;
+```

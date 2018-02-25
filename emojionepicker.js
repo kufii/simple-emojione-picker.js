@@ -1,6 +1,9 @@
 (() => {
 	'use strict';
 
+	emojione.imageType = 'png';
+	emojione.sprites = true;
+
 	let Util = {
 		q(query, context) {
 			return (context || document).querySelector(query);
@@ -15,14 +18,13 @@
 	};
 
 	let EmojiHelper = {
-		toCleanedImage(str, size) {
+		toImageWithoutTitle(str, size) {
 			let tempDiv = document.createElement('div');
 			tempDiv.innerHTML = emojione.toImage(str);
-			Util.qq('img', tempDiv).forEach(emoji => {
+			Util.qq('img, span', tempDiv).forEach(emoji => {
 				emoji.removeAttribute('title');
-				emoji.removeAttribute('class');
 				if (size) {
-					emoji.width = size;
+					emoji.style.width = emoji.style.height = size + 'px';
 				}
 			});
 			return tempDiv.innerHTML;
@@ -120,7 +122,7 @@
 			tab.classList.add('emojione-picker-tab');
 			tab.title = cat.title;
 			tab.dataset.index = catIndex;
-			tab.innerHTML = EmojiHelper.toCleanedImage(`:${cat.icon}:`, cfg.tabIconSize);
+			tab.innerHTML = EmojiHelper.toImageWithoutTitle(`:${cat.icon}:`, cfg.tabIconSize);
 
 			cat.emoji.forEach(emoji => {
 				let tones = [''];
@@ -144,7 +146,7 @@
 
 					let shortname = `:${name}:`;
 					btn.dataset.name = shortname;
-					btn.innerHTML = EmojiHelper.toCleanedImage(shortname, cfg.emojiSize);
+					btn.innerHTML = EmojiHelper.toImageWithoutTitle(shortname, cfg.emojiSize);
 
 					pages.appendChild(btn);
 				});
