@@ -98,8 +98,6 @@
 }
 
 .emojione-picker-tab > img {
-	width: 26px;
-	height: 26px;
 	margin: 0 3px;
 }
 
@@ -120,8 +118,6 @@
 }
 
 .emojione-picker-emoji {
-	width: 30px;
-	height: 30px;
 	margin: 1px;
 	padding: 3px;
 	border-radius: 4px;
@@ -137,8 +133,4 @@
 .emojione-picker-emoji > img {
 	width: 100%;
 	height: 100%;
-}
-
-.emojione-picker-emoji.hidden {
-	display: none;
 }

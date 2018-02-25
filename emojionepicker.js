@@ -15,10 +15,13 @@
 	};
 
 	let EmojiHelper = {
-		toImageWithoutTitle(str) {
+		toCleanedImage(str) {
 			let tempDiv = document.createElement('div');
 			tempDiv.innerHTML = emojione.toImage(str);
-			Util.qq('img', tempDiv).forEach(emoji => emoji.removeAttribute('title'));
+			Util.qq('img', tempDiv).forEach(emoji => {
+				emoji.removeAttribute('title');
+				emoji.removeAttribute('class');
+			});
 			return tempDiv.innerHTML;
 		},
 		handleExceptions(name) {
@@ -114,7 +117,9 @@
 			tab.classList.add('emojione-picker-tab');
 			tab.title = cat.title;
 			tab.dataset.index = catIndex;
-			tab.innerHTML = EmojiHelper.toImageWithoutTitle(`:${cat.icon}:`);
+			tab.innerHTML = EmojiHelper.toCleanedImage(`:${cat.icon}:`);
+			let icon = Util.q('img', tab);
+			icon.style.height = icon.style.width = cfg.tabIconSize + 'px';
 
 			cat.emoji.forEach(emoji => {
 				let tones = [''];
@@ -127,6 +132,7 @@
 					let btn = document.createElement('i');
 					btn.classList.add('emojione-picker-emoji');
 					btn.setAttribute('role', 'button');
+					btn.style.height = btn.style.width = cfg.emojiSize + 'px';
 					btn.dataset.category = catIndex;
 
 					if (tones.length > 1) {
@@ -138,7 +144,7 @@
 
 					let shortname = `:${name}:`;
 					btn.dataset.name = shortname;
-					btn.innerHTML = EmojiHelper.toImageWithoutTitle(shortname);
+					btn.innerHTML = EmojiHelper.toCleanedImage(shortname);
 
 					pages.appendChild(btn);
 				});
@@ -157,6 +163,8 @@
 	let setDefaults = function(cfg) {
 		if (typeof cfg.search === 'undefined') cfg.search = true;
 		if (typeof cfg.tones === 'undefined') cfg.tones = true;
+		if (typeof cfg.emojiSize === 'undefined') cfg.emojiSize = 32;
+		if (typeof cfg.tabIconSize === 'undefined') cfg.tabIconSize = 32;
 		return cfg;
 	};
 
@@ -171,8 +179,53 @@
 		let pages = Util.q('.emojione-picker-pages', picker);
 
 		let lastSelectedPage = '0';
+		let lastSelectedTone = '0';
+		let lastSearch = '';
+
+		let updateEmojiVisibility = function() {
+			let showAllEmoji = () => emoji.forEach(e => e.removeAttribute('hidden'));
+
+			let hideUnselectedPages = () => {
+				emoji.forEach(e => {
+					if (e.dataset.category !== lastSelectedPage) {
+						e.setAttribute('hidden', '');
+					}
+				});
+			};
+
+			let hideUnselectedTones = () => {
+				emoji.filter(e => e.dataset.tone).forEach(e => {
+					if (e.dataset.tone !== lastSelectedTone) {
+						e.setAttribute('hidden', '');
+					}
+				});
+			};
+
+			let performSearch = query => {
+				emoji.forEach(e => {
+					if (e.dataset.name.indexOf(query) === -1) {
+						e.setAttribute('hidden', '');
+					}
+				});
+			};
+
+			showAllEmoji();
+			hideUnselectedTones();
+			if (lastSearch.trim()) {
+				performSearch(lastSearch.trim().toLowerCase().replace(/ /g, '_'));
+			} else {
+				hideUnselectedPages();
+			}
+		};
+
 		let selectPage = function(index) {
 			index = index.toString();
+
+			if (lastSelectedPage !== index) {
+				pages.scrollTop = 0;
+			}
+
+			lastSelectedPage = index;
 
 			tabs.forEach(node => {
 				if (node.dataset.index === index) {
@@ -181,26 +234,18 @@
 					node.classList.remove('active');
 				}
 			});
-			emoji.forEach(e => {
-				if (e.dataset.category === index) {
-					e.removeAttribute('style');
-				} else {
-					e.style.display = 'none';
-				}
-			});
+
+			updateEmojiVisibility();
 
 			if (cfg.onPageChange) {
 				cfg.onPageChange(tab.dataset.index);
 			}
-			if (lastSelectedPage !== index) {
-				pages.scrollTop = 0;
-			}
-
-			lastSelectedPage = index;
 		};
 
 		let selectTone = function(tone) {
 			tone = tone.toString();
+			lastSelectedTone = tone;
+
 			tones.forEach(t => {
 				if (t.dataset.tone === tone) {
 					t.classList.add('active');
@@ -208,34 +253,24 @@
 					t.classList.remove('active');
 				}
 			});
-			emoji.filter(e => e.dataset.tone).forEach(e => {
-				if (e.dataset.tone === tone) {
-					e.classList.remove('hidden');
-				} else {
-					e.classList.add('hidden');
-				}
-			});
+
+			updateEmojiVisibility();
+
 			if (cfg.onToneChange) {
 				cfg.onToneChange(tone.dataset.index);
 			}
 		};
 
-		let search = function(query) {
+		let search = function(query = '') {
+			lastSearch = query;
 			if (searchbox) {
 				searchbox.value = query;
 			}
-			query = query.toLowerCase().trim().replace(/ /g, '_');
-			if (query) {
-				tabs.forEach(tab => tab.style.display = 'none');
-				emoji.forEach(e => {
-					if (e.dataset.name.indexOf(query) !== -1) {
-						e.removeAttribute('style');
-					} else {
-						e.style.display = 'none';
-					}
-				});
+			if (query.trim()) {
+				tabs.forEach(tab => tab.style.visibility = 'hidden');
+				updateEmojiVisibility();
 			} else {
-				emoji.concat(tabs).forEach(node => node.removeAttribute('style'));
+				tabs.forEach(tab => tab.style.visibility = 'visible');
 				selectPage(lastSelectedPage);
 				pages.scrollTop = 0;
 			}

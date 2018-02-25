@@ -43,6 +43,22 @@ Configuration parameters can be passed by adding a cfg object parameter. Eg.
 let picker = EmojiPicker(document.querySelector('#picker'), cfg);
 ```
 
+**`width`** and **`height`**
+
+Sets the width/height of the picker
+
+**type:** `string`  
+**default:** `auto`
+
+Example:
+
+```javascript
+let picker = EmojiPicker(document.body, {
+	width: '285px',
+	height: '300px'
+});
+```
+
 **`onselect`**
 
 Captures the selected emoji.
@@ -118,19 +134,33 @@ let picker = EmojiPicker(document.querySelector('#picker'), {
 });
 ```
 
-**`width`** and **`height`**
+**`emojiSize`**
 
-Sets the width/height of the picker
+Size of the emoji in pixels
 
-**type:** `string`  
-**default:** `auto`
+**type:** `number`  
+**default:** `32`
 
 Example:
 
 ```javascript
-let picker = EmojiPicker(document.body, {
-	width: '285px',
-	height: '300px'
+let picker = EmojiPicker(document.querySelector('#picker'), {
+	emojiSize: 20
+});
+```
+
+**`tabIconSize`**
+
+Size of the category icons in pixels
+
+**type:** `number`  
+**default:** `32`
+
+Example:
+
+```javascript
+let picker = EmojiPicker(document.querySelector('#picker'), {
+	tabIconSize: 20
 });
 ```
 
