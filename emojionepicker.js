@@ -15,12 +15,15 @@
 	};
 
 	let EmojiHelper = {
-		toCleanedImage(str) {
+		toCleanedImage(str, size) {
 			let tempDiv = document.createElement('div');
 			tempDiv.innerHTML = emojione.toImage(str);
 			Util.qq('img', tempDiv).forEach(emoji => {
 				emoji.removeAttribute('title');
 				emoji.removeAttribute('class');
+				if (size) {
+					emoji.width = size;
+				}
 			});
 			return tempDiv.innerHTML;
 		},
@@ -117,9 +120,7 @@
 			tab.classList.add('emojione-picker-tab');
 			tab.title = cat.title;
 			tab.dataset.index = catIndex;
-			tab.innerHTML = EmojiHelper.toCleanedImage(`:${cat.icon}:`);
-			let icon = Util.q('img', tab);
-			icon.style.height = icon.style.width = cfg.tabIconSize + 'px';
+			tab.innerHTML = EmojiHelper.toCleanedImage(`:${cat.icon}:`, cfg.tabIconSize);
 
 			cat.emoji.forEach(emoji => {
 				let tones = [''];
@@ -132,7 +133,6 @@
 					let btn = document.createElement('i');
 					btn.classList.add('emojione-picker-emoji');
 					btn.setAttribute('role', 'button');
-					btn.style.height = btn.style.width = cfg.emojiSize + 'px';
 					btn.dataset.category = catIndex;
 
 					if (tones.length > 1) {
@@ -144,7 +144,7 @@
 
 					let shortname = `:${name}:`;
 					btn.dataset.name = shortname;
-					btn.innerHTML = EmojiHelper.toCleanedImage(shortname);
+					btn.innerHTML = EmojiHelper.toCleanedImage(shortname, cfg.emojiSize);
 
 					pages.appendChild(btn);
 				});

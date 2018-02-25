@@ -97,10 +97,6 @@
 	background-color: white;
 }
 
-.emojione-picker-tab > img {
-	margin: 0 3px;
-}
-
 .emojione-picker-pages-wrap {
 	overflow: hidden;
 	padding: 0 0 5px;
@@ -115,22 +111,21 @@
 	right: 0;
 	bottom: 0;
 	overflow: auto;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .emojione-picker-emoji {
 	margin: 1px;
 	padding: 3px;
 	border-radius: 4px;
-	float: left;
 	text-align: center;
 	cursor: pointer;
+}
+.emojione-picker-emoji > img {
+	vertical-align: middle;
 }
 
 .emojione-picker-emoji:hover {
 	background-color: #E4E4E4;
-}
-
-.emojione-picker-emoji > img {
-	width: 100%;
-	height: 100%;
 }
