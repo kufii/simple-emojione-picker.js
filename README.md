@@ -43,6 +43,7 @@ Configuration parameters can be passed by adding a cfg object parameter. Eg.
 let picker = EmojiPicker(document.querySelector('#picker'), cfg);
 ```
 
+\
 **`width`** and **`height`**
 
 Sets the width/height of the picker
@@ -59,6 +60,7 @@ let picker = EmojiPicker(document.body, {
 });
 ```
 
+\
 **`onselect`**
 
 Captures the selected emoji.
@@ -74,6 +76,7 @@ let picker = EmojiPicker(document.querySelector('#picker'), {
 });
 ```
 
+\
 **`onPageChange`**
 
 Captres page change event
@@ -89,6 +92,7 @@ let picker = EmojiPicker(document.querySelector('#picker'), {
 });
 ```
 
+\
 **`onToneChange`**
 
 Captures skin tone change event
@@ -104,6 +108,7 @@ let picker = EmojiPicker(document.querySelector('#picker'), {
 });
 ```
 
+\
 **`search`**
 
 Show search box
@@ -119,6 +124,7 @@ let picker = EmojiPicker(document.querySelector('#picker'), {
 });
 ```
 
+\
 **`tones`**
 
 Show tone buttons
@@ -134,6 +140,7 @@ let picker = EmojiPicker(document.querySelector('#picker'), {
 });
 ```
 
+\
 **`emojiSize`**
 
 Size of the emoji in pixels
@@ -149,6 +156,7 @@ let picker = EmojiPicker(document.querySelector('#picker'), {
 });
 ```
 
+\
 **`tabIconSize`**
 
 Size of the category icons in pixels
@@ -177,6 +185,7 @@ let picker = EmojiPicker(document.querySelector('#picker'));
 picker.selectPage(3);
 ```
 
+\
 **`selectTone(index)`**
 
 Programatically set the selected tone
@@ -188,6 +197,7 @@ let picker = EmojiPicker(document.querySelector('#picker'));
 picker.selectTone(3);
 ```
 
+\
 **`search(query)`**
 
 Programatically perform a search
@@ -204,7 +214,6 @@ picker.search('heart');
 You can enable sprite mode to reduce load times, and use emoji sizes of up ot 64x64. To do so link one of the [emojione spritesheet css](https://github.com/emojione/emojione-assets/tree/master/sprites) and before creating the picker call the following:
 
 ```javascript
-emojione.imageType = 'png';
 emojione.sprites = true;
 ```
 
