@@ -42,7 +42,7 @@
 
 .emojione-picker-tone::after {
 	position: relative;
-	border-radius:  100%;
+	border-radius: 100%;
 	content: "";
 	display: block;
 	top: 4px;
@@ -84,7 +84,7 @@
 }
 
 .emojione-picker-tabs {
-	background-color: #F5F7F9;
+	background-color: #f5f7f9;
 	flex-grow: 0;
 	display: flex;
 }
@@ -97,7 +97,8 @@
 	text-align: center;
 }
 
-.emojione-picker-tab.active, .emojione-picker-tab:hover {
+.emojione-picker-tab.active,
+.emojione-picker-tab:hover {
 	filter: grayscale(0);
 }
 
@@ -132,5 +133,5 @@
 }
 
 .emojione-picker-emoji:hover {
-	background-color: #E4E4E4;
+	background-color: #e4e4e4;
 }
