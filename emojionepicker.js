@@ -26,7 +26,7 @@
 			return tempDiv.innerHTML;
 		},
 		handleExceptions(name) {
-			if (name.indexOf('sleeping_accommodation_tone') !== -1) {
+			if (name.includes('sleeping_accommodation_tone')) {
 				return name.replace(/sleeping_accommodation_tone/, 'person_in_bed_tone');
 			}
 			return name;
@@ -100,7 +100,7 @@
 				tones.classList.add('emojione-picker-tones');
 				for (let i = 0; i <= 5; i++) {
 					let tone = document.createElement('i');
-					tone.classList.add('emojione-picker-tone', 'emojione-picker-tone-' + i);
+					tone.classList.add('emojione-picker-tone', `emojione-picker-tone-${i}`);
 					tone.setAttribute('role', 'button');
 					tone.dataset.tone = i;
 					tones.appendChild(tone);
@@ -131,7 +131,7 @@
 				let tones = [''];
 				if (diverse.includes(emoji)) {
 					for (let i = 1; i <= 5; i++) {
-						tones.push('_tone' + i);
+						tones.push(`_tone${i}`);
 					}
 				}
 				tones.forEach((tone, toneIndex) => {
@@ -199,7 +199,7 @@
 
 			const performSearch = query => {
 				emoji.forEach(e => {
-					if (e.dataset.name.indexOf(query) === -1) {
+					if (e.dataset.name.includes(query)) {
 						e.setAttribute('hidden', '');
 					}
 				});
