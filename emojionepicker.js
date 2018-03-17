@@ -199,7 +199,7 @@
 
 			const performSearch = query => {
 				emoji.forEach(e => {
-					if (e.dataset.name.includes(query)) {
+					if (!e.dataset.name.includes(query)) {
 						e.setAttribute('hidden', '');
 					}
 				});
