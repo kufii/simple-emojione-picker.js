@@ -280,7 +280,7 @@
 			tones.forEach(tone => tone.onclick = toneClick);
 
 			if (searchbox) {
-				searchbox.onkeyup = e => search(e.currentTarget.value);
+				searchbox.oninput = e => search(e.currentTarget.value);
 			}
 
 			if (cfg.onselect) {
