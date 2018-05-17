@@ -89,9 +89,9 @@
 
 			if (search) {
 				let search = document.createElement('input');
+				search.type = 'text';
 				search.classList.add('emojione-picker-search');
-				search.setAttribute('placeholder', 'SEARCH');
-				search.setAttribute('type', 'text');
+				search.placeholder = 'SEARCH';
 				topPanel.appendChild(search);
 			}
 
@@ -179,12 +179,12 @@
 		let lastSearch = '';
 
 		const updateEmojiVisibility = function() {
-			const showAllEmoji = () => emoji.forEach(e => e.removeAttribute('hidden'));
+			const showAllEmoji = () => emoji.forEach(e => e.hidden = false);
 
 			const hideUnselectedPages = () => {
 				emoji.forEach(e => {
 					if (e.dataset.category !== lastSelectedPage) {
-						e.setAttribute('hidden', '');
+						e.hidden = true;
 					}
 				});
 			};
@@ -192,7 +192,7 @@
 			const hideUnselectedTones = () => {
 				emoji.filter(e => e.dataset.tone).forEach(e => {
 					if (e.dataset.tone !== lastSelectedTone) {
-						e.setAttribute('hidden', '');
+						e.hidden = true;
 					}
 				});
 			};
@@ -200,7 +200,7 @@
 			const performSearch = query => {
 				emoji.forEach(e => {
 					if (!e.dataset.name.includes(query)) {
-						e.setAttribute('hidden', '');
+						e.hidden = true;
 					}
 				});
 			};
