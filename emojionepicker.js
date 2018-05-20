@@ -15,7 +15,7 @@
 
 	const EmojiHelper = {
 		toImageWithoutTitle(str, size) {
-			let tempDiv = document.createElement('div');
+			const tempDiv = document.createElement('div');
 			tempDiv.innerHTML = emojione.toImage(str);
 			Util.qq('img, span', tempDiv).forEach(emoji => {
 				emoji.removeAttribute('title');
@@ -78,17 +78,17 @@
 	const diverse = ['open_hands', 'raised_hands', 'clap', 'pray', 'thumbsup', 'thumbsdown', 'punch', 'fist', 'left_facing_fist', 'right_facing_fist', 'fingers_crossed', 'v', 'metal', 'ok_hand', 'point_left', 'point_right', 'point_up_2', 'point_down', 'point_up', 'raised_hand', 'raised_back_of_hand', 'hand_splayed', 'vulcan', 'wave', 'call_me', 'muscle', 'middle_finger', 'writing_hand', 'selfie', 'nail_care', 'ear', 'nose', 'baby', 'boy', 'girl', 'man', 'woman', 'blond-haired_woman', 'blond_haired_person', 'blond-haired_man', 'older_man', 'older_woman', 'man_with_chinese_cap', 'woman_wearing_turban', 'person_wearing_turban', 'man_wearing_turban', 'woman_police_officer', 'police_officer', 'man_police_officer', 'woman_construction_worker', 'construction_worker', 'man_construction_worker', 'woman_guard', 'guard', 'man_guard', 'woman_detective', 'detective', 'man_detective', 'woman_health_worker', 'man_health_worker', 'woman_farmer', 'man_farmer', 'woman_cook', 'man_cook', 'woman_student', 'man_student', 'woman_singer', 'man_singer', 'woman_teacher', 'man_teacher', 'woman_factory_worker', 'man_factory_worker', 'woman_technologist', 'man_technologist', 'woman_office_worker', 'man_office_worker', 'woman_mechanic', 'man_mechanic', 'woman_scientist', 'man_scientist', 'woman_artist', 'man_artist', 'woman_firefighter', 'man_firefighter', 'woman_pilot', 'man_pilot', 'woman_astronaut', 'man_astronaut', 'woman_judge', 'man_judge', 'mrs_claus', 'santa', 'princess', 'prince', 'bride_with_veil', 'man_in_tuxedo', 'angel', 'pregnant_woman', 'woman_bowing', 'person_bowing', 'man_bowing', 'person_tipping_hand', 'man_tipping_hand', 'woman_tipping_hand', 'person_gesturing_no', 'man_gesturing_no', 'woman_gesturing_no', 'person_gesturing_ok', 'man_gesturing_ok', 'woman_gesturing_ok', 'person_raising_hand', 'man_raising_hand', 'woman_raising_hand', 'woman_facepalming', 'man_facepalming', 'person_facepalming', 'woman_shrugging', 'man_shrugging', 'person_shrugging', 'person_pouting', 'man_pouting', 'woman_pouting', 'person_frowning', 'man_frowning', 'woman_frowning', 'person_getting_haircut', 'man_getting_haircut', 'woman_getting_haircut', 'person_getting_massage', 'man_getting_face_massage', 'woman_getting_face_massage', 'levitate', 'dancer', 'man_dancing', 'woman_walking', 'person_walking', 'man_walking', 'woman_running', 'person_running', 'man_running', 'adult', 'child', 'older_adult', 'bearded_person', 'woman_with_headscarf', 'mage', 'fairy', 'vampire', 'merperson', 'elf', 'love_you_gesture', 'palms_up_together', 'woman_mage', 'man_mage', 'woman_fairy', 'man_fairy', 'woman_vampire', 'man_vampire', 'mermaid', 'merman', 'woman_elf', 'man_elf', 'snowboarder', 'woman_lifting_weights', 'person_lifting_weights', 'man_lifting_weights', 'woman_cartwheeling', 'man_cartwheeling', 'person_doing_cartwheel', 'woman_bouncing_ball', 'person_bouncing_ball', 'man_bouncing_ball', 'woman_playing_handball', 'man_playing_handball', 'person_playing_handball', 'woman_golfing', 'person_golfing', 'man_golfing', 'woman_surfing', 'person_surfing', 'man_surfing', 'woman_swimming', 'person_swimming', 'man_swimming', 'woman_playing_water_polo', 'man_playing_water_polo', 'person_playing_water_polo', 'woman_rowing_boat', 'person_rowing_boat', 'man_rowing_boat', 'horse_racing', 'woman_biking', 'person_biking', 'man_biking', 'woman_mountain_biking', 'person_mountain_biking', 'man_mountain_biking', 'woman_juggling', 'man_juggling', 'person_juggling', 'breast_feeding', 'person_in_steamy_room', 'person_climbing', 'person_in_lotus_position', 'woman_in_steamy_room', 'man_in_steamy_room', 'woman_climbing', 'man_climbing', 'woman_in_lotus_position', 'man_in_lotus_position', 'bath', 'sleeping_accommodation'];
 
 	const createPicker = function({ width, height, search = true, tones = true, emojiSize = 32, tabIconSize = 32 } = {}) {
-		let picker = document.createElement('div');
+		const picker = document.createElement('div');
 		picker.classList.add('emojione-picker');
 		picker.style.width = width;
 		picker.style.height = height;
 
 		if (search || tones) {
-			let topPanel = document.createElement('div');
+			const topPanel = document.createElement('div');
 			topPanel.classList.add('emojione-picker-top');
 
 			if (search) {
-				let search = document.createElement('input');
+				const search = document.createElement('input');
 				search.type = 'text';
 				search.classList.add('emojione-picker-search');
 				search.placeholder = 'SEARCH';
@@ -96,10 +96,10 @@
 			}
 
 			if (tones) {
-				let tones = document.createElement('div');
+				const tones = document.createElement('div');
 				tones.classList.add('emojione-picker-tones');
 				for (let i = 0; i <= 5; i++) {
-					let tone = document.createElement('i');
+					const tone = document.createElement('i');
 					tone.classList.add('emojione-picker-tone', `emojione-picker-tone-${i}`);
 					tone.setAttribute('role', 'button');
 					tone.dataset.tone = i;
@@ -111,31 +111,31 @@
 			picker.appendChild(topPanel);
 		}
 
-		let tabs = document.createElement('div');
+		const tabs = document.createElement('div');
 		tabs.classList.add('emojione-picker-tabs');
 
-		let pagesContainer = document.createElement('div');
+		const pagesContainer = document.createElement('div');
 		pagesContainer.classList.add('emojione-picker-pages-wrap');
 
-		let pages = document.createElement('div');
+		const pages = document.createElement('div');
 		pages.classList.add('emojione-picker-pages');
 
 		categories.forEach((cat, catIndex) => {
-			let tab = document.createElement('i');
+			const tab = document.createElement('i');
 			tab.classList.add('emojione-picker-tab');
 			tab.title = cat.title;
 			tab.dataset.index = catIndex;
 			tab.innerHTML = EmojiHelper.toImageWithoutTitle(`:${cat.icon}:`, tabIconSize);
 
 			cat.emoji.forEach(emoji => {
-				let tones = [''];
+				const tones = [''];
 				if (diverse.includes(emoji)) {
 					for (let i = 1; i <= 5; i++) {
 						tones.push(`_tone${i}`);
 					}
 				}
 				tones.forEach((tone, toneIndex) => {
-					let btn = document.createElement('i');
+					const btn = document.createElement('i');
 					btn.classList.add('emojione-picker-emoji');
 					btn.setAttribute('role', 'button');
 					btn.dataset.category = catIndex;
@@ -144,10 +144,10 @@
 						btn.dataset.tone = toneIndex;
 					}
 
-					let name = EmojiHelper.handleExceptions(emoji + tone);
+					const name = EmojiHelper.handleExceptions(emoji + tone);
 					btn.title = Util.titleCase(name, '_');
 
-					let shortname = `:${name}:`;
+					const shortname = `:${name}:`;
 					btn.dataset.name = shortname;
 					btn.innerHTML = EmojiHelper.toImageWithoutTitle(shortname, emojiSize);
 
@@ -166,13 +166,13 @@
 	};
 
 	window.EmojiPicker = function(container, cfg = {}) {
-		let picker = createPicker(cfg);
+		const picker = createPicker(cfg);
 
-		let tabs = Util.qq('.emojione-picker-tab', picker);
-		let tones = Util.qq('.emojione-picker-tone', picker);
-		let emoji = Util.qq('.emojione-picker-emoji', picker);
-		let searchbox = Util.q('.emojione-picker-search', picker);
-		let pages = Util.q('.emojione-picker-pages', picker);
+		const tabs = Util.qq('.emojione-picker-tab', picker);
+		const tones = Util.qq('.emojione-picker-tone', picker);
+		const emoji = Util.qq('.emojione-picker-emoji', picker);
+		const searchbox = Util.q('.emojione-picker-search', picker);
+		const pages = Util.q('.emojione-picker-pages', picker);
 
 		let lastSelectedPage = '0';
 		let lastSelectedTone = '0';
@@ -273,10 +273,10 @@
 		};
 
 		const setEventHandlers = function() {
-			let tabClick = e => selectPage(e.currentTarget.dataset.index);
+			const tabClick = e => selectPage(e.currentTarget.dataset.index);
 			tabs.forEach(tab => tab.onclick = tabClick);
 
-			let toneClick = e => selectTone(e.currentTarget.dataset.tone);
+			const toneClick = e => selectTone(e.currentTarget.dataset.tone);
 			tones.forEach(tone => tone.onclick = toneClick);
 
 			if (searchbox) {
@@ -284,10 +284,10 @@
 			}
 
 			if (cfg.onselect) {
-				let emojiClick = e => {
-					let emoji = e.currentTarget;
-					let shortname = emoji.dataset.name;
-					let unicode = emojione.shortnameToUnicode(shortname);
+				const emojiClick = e => {
+					const emoji = e.currentTarget;
+					const shortname = emoji.dataset.name;
+					const unicode = emojione.shortnameToUnicode(shortname);
 					cfg.onselect(unicode, shortname);
 				};
 				emoji.forEach(e => e.onclick = emojiClick);
