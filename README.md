@@ -79,7 +79,7 @@ let picker = EmojiPicker(document.querySelector('#picker'), {
 \
 **`onPageChange`**
 
-Captres page change event
+Captures page change event
 
 **type:** `function(index)`
 
@@ -176,7 +176,7 @@ let picker = EmojiPicker(document.querySelector('#picker'), {
 
 **`selectPage(index)`**
 
-Programatically change the picker's page
+Programmatically change the picker's page
 
 Example:
 
@@ -188,7 +188,7 @@ picker.selectPage(3);
 \
 **`selectTone(index)`**
 
-Programatically set the selected tone
+Programmatically set the selected tone
 
 Example:
 
@@ -200,7 +200,7 @@ picker.selectTone(3);
 \
 **`search(query)`**
 
-Programatically perform a search
+Programmatically perform a search
 
 Example:
 
@@ -211,10 +211,10 @@ picker.search('heart');
 
 ## Sprite Mode
 
-You can enable sprite mode to reduce load times, and use emoji sizes of up ot 64x64. To do so link one of the [emojione spritesheet css](https://github.com/emojione/emojione-assets/tree/master/sprites) and before creating the picker call the following:
+You can enable sprite mode to reduce load times, and use emoji sizes of up to 64x64. To do so link one of the [emojione sprite sheet css](https://github.com/emojione/emojione-assets/tree/master/sprites) and before creating the picker call the following:
 
 ```javascript
 emojione.sprites = true;
 ```
 
-The tradeoff with this mode is that `emojiSize` and `tabIconSize` will not work. The size of the emojis will be the size of whatever spritesheet you link.
+The trade off with this mode is that `emojiSize` and `tabIconSize` will not work. The size of the emojis will be the size of whatever sprite sheet you link.
